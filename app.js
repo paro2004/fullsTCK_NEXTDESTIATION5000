@@ -86,7 +86,7 @@ const port = 3000;
 const store = MongoStoreCreate({
   mongoUrl: atlas_url,
   crypto: {
-    secret:PerformanceObserverEntryList.env.SECRET
+    secret:process.env.SECRET
   },
   touchAfter: 24 * 3600,
 
