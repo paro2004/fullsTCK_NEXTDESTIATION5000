@@ -1,0 +1,197 @@
+<% layout("/layouts/boilerPlate") %>
+<script>
+    window.mapToken = "<%= mapToken %>";
+</script>
+
+<style>
+    .reserve-container { display:flex; justify-content:flex-end; margin:0.5rem 0 0 0; }
+    .reserve-btn {
+        border-radius: 0.75rem;
+        padding: 0.5rem 0.9rem;
+        background: #dc3545; /* red */
+        box-shadow: 0 6px 12px rgba(0,0,0,0.06);
+        color: #fff;
+        font-weight: 600;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        border: none;
+    }
+    .reserve-btn:hover{ background:#c82333 }
+    .reserve-price { color: #fff; margin-left: 0.4rem; font-weight: 700; }
+</style>
+
+<div class="container mt-4 px-3">
+
+    <div class="row justify-content-center">
+
+        <div class="col-md-8">
+
+            <!-- CARD -->
+            <div class="card">
+                <h2 class="mb-3 ms-3 mt-3"><%= listing.title %></h2>
+
+                <% const listingImageUrl = typeof listing.image === 'string' 
+                    ? (listing.image.match(/url\s*[:=]\s*['"]([^'"]+)['"]/) ? listing.image.match(/url\s*[:=]\s*['"]([^'"]+)['"]/)[1] : listing.image)
+                    : listing.image?.url || '' %>
+                <img 
+                    src="<%= listingImageUrl %>"
+                    class="card-img-top show-img"
+                    alt="listing_image"
+                    style="height:300px; object-fit:cover;"
+                    onerror="this.src='https://images.pexels.com/photos/28408505/pexels-photo-28408505.jpeg'"
+                >
+
+                <div class="card-body mt-3">
+
+                    <p class="card-text">
+
+                        <i>Owned by @<b><%= listing.owner?.username || 'Unknown' %></b></i><br>
+                        
+                        <% if (listing.catagory) { %>
+                            <b>Category:</b> <%= listing.catagory %><br>
+                        <% } %>
+
+                        <%= listing.description || '' %><br><br>
+
+                        <b>₹<%= listing.price != null ? listing.price.toLocaleString("en-IN") : 'N/A' %></b><br>
+
+                        <%= listing.location || '' %><br>
+
+                        <%= listing.country || '' %><br>
+
+                    </p>
+
+                </div>
+
+                        <div class="reserve-container">
+                            <button class="reserve-btn" type="button">
+                                Reserve
+                                <span class="reserve-price">₹<%= listing.price != null ? listing.price.toLocaleString("en-IN") : 'N/A' %></span>
+                            </button>
+                        </div>
+
+                        <!-- BUTTONS BELOW CARD -->
+            <% if (currUser && listing.owner && currUser._id.equals(listing.owner._id)) { %>
+            <div class="d-flex gap-2 mt-3">
+                <a href="/listing/<%= listing._id %>/edit" class="btn btn-dark edit2-btn px-3 me-2">Edit</a>
+                <form method="POST" action="/listing/<%= listing._id %>?_method=DELETE">
+                    <button class="btn btn-dark delet-btn px-3" type="submit">Delete</button>
+                </form>
+            </div>
+            <% } %>
+           
+
+            <hr class="my-4">
+
+            <section class="review-section mt-4">
+                <div class="review-summary-card">
+                    <div class="review-summary-top">
+                        <div>
+                            <div class="review-section-title">Ratings & reviews</div>
+                            <div class="review-section-subtitle">What guests are saying about this stay.</div>
+                        </div>
+                        <div class="review-summary-meta">
+                            <div class="d-flex align-items-center gap-2 mb-1">
+                                <div class="stability-rating" data-rating="<%= averageRating %>">
+                                    <div class="stability-stars">
+                                        <span class="stability-star"></span>
+                                        <span class="stability-star"></span>
+                                        <span class="stability-star"></span>
+                                        <span class="stability-star"></span>
+                                        <span class="stability-star"></span>
+                                    </div>
+                                    <span class="stability-value"><%= averageRating %></span>
+                                </div>
+                            </div>
+                            <div><strong><%= reviewCount %> review<%= reviewCount === 1 ? "" : "s" %></strong> · Superhost · Great location</div>
+                        </div>
+                    </div>
+                </div>
+
+                <%  if(currUser){ %>
+                <div class="review-form-card">
+                    <div class="d-flex align-items-center justify-content-between mb-3">
+                        <div>
+                            <h4 class="mb-1">Leave a Review</h4>
+                            <p class="text-muted small mb-0">Share your experience with other travelers.</p>
+                        </div>
+                        <span class="review-badge">Rating 1-5</span>
+                    </div>
+                    <form action = "/listing/<%= listing.id %>/reviews" method="POST" novalidate class = "needs-validation">
+                        <div class="mb-4">
+                            <label class="form-label">Rating</label>
+                            <div class="star-rating-input" role="radiogroup" aria-label="Choose a rating">
+                                <input type="radio" id="star5" name="review[rating]" value="5" required>
+                                <label for="star5" title="5 stars">★</label>
+                                <input type="radio" id="star4" name="review[rating]" value="4">
+                                <label for="star4" title="4 stars">★</label>
+                                <input type="radio" id="star3" name="review[rating]" value="3">
+                                <label for="star3" title="3 stars">★</label>
+                                <input type="radio" id="star2" name="review[rating]" value="2">
+                                <label for="star2" title="2 stars">★</label>
+                                <input type="radio" id="star1" name="review[rating]" value="1">
+                                <label for="star1" title="1 star">★</label>
+                            </div>
+                        </div>
+                        <div class="mb-4">
+                            <label for="comment" class="form-label">Comment</label>
+                            <textarea name="review[comment]" id="comment" rows="2" class="form-control"
+                            required ></textarea>
+                            <div class="invalid-feedback">Please write a comment at first!</div>
+                        </div>
+                        <button type="submit" class="btn btn-dark px-4 mb-3">Post Review</button>
+                    </form>
+                </div>
+                 <% } %>
+
+                <% if (listing.reviews && listing.reviews.length) { %>
+                <div class="review-cards">
+                    <% for (let idx = 0; idx < listing.reviews.length; idx++) { 
+                        const review = listing.reviews[idx];
+                    %>
+                        <article class="review-card">
+                            <div class="review-card-meta d-flex align-items-center justify-content-between flex-wrap gap-3">
+                                <div class="d-flex align-items-center gap-2">
+                                    <div class="review-avatar"><%= review.author && review.author.username ? review.author.username.charAt(0).toUpperCase() : 'G' %></div>
+                                    <div>
+                                        <div class="review-author-name"><%= review.author && review.author.username ? review.author.username : 'Guest' %></div>
+                                        <div class="review-author">Reviewed this stay</div>
+                                    </div>
+                                </div>
+                                <div class="d-flex align-items-center gap-2">
+                                    <% if (currUser && review.author && currUser._id && review.author._id && currUser._id.toString() === review.author._id.toString()) { %>
+                                        <form action="/listing/<%= listing._id %>/reviews/<%= review._id %>" method="POST" onsubmit="return confirm('Delete this review?');">
+                                            <input type="hidden" name="_method" value="DELETE">
+                                            <button type="submit" class="btn btn-sm btn-outline-danger">Delete</button>
+                                        </form>
+                                    <% } %>
+                                </div>
+                            </div>
+                            <div class="review-stars mt-3" aria-label="Rating: <%= review.rating %> out of 5">
+                                <% for (let i = 1; i <= 5; i++) { %>
+                                    <span class="star <%= i <= review.rating ? 'filled' : '' %>">&#9733;</span>
+                                <% } %>
+                                <span class="review-rating ms-2"><%= review.rating %> / 5</span>
+                            </div>
+                            <p class="review-text mt-3"><%= review.comment %></p>
+                        </article>
+                    <% } %>
+                </div>
+                <% } else { %>
+                    <div class="review-empty-card">No reviews yet. Be the first to share your experience.</div>
+                <% } %>
+            </section>
+
+            <section class="review-section mt-4">
+                <h4>Where you'll be</h4>
+                <div id="map" data-coordinates='<%- JSON.stringify(listing.geometry?.coordinates || null) %>'></div>
+            </section>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="/js/map.js"></script>

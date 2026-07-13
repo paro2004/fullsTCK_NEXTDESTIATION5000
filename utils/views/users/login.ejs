@@ -1,0 +1,45 @@
+<% layout("/layouts/boilerPlate") %>
+
+<div class="row mt-4 justify-content-center">
+    <div class="col-lg-6 col-md-8 col-12">
+        <div class="auth-card p-4">
+            <div class="text-center mb-4">
+                <h2 class="auth-title">Login on Next-Destination</h2>
+                <p class="auth-subtitle">Login your account to explore more</p>
+            </div>
+
+            <form action="/login" method="POST" novalidate class="needs-validation">
+                <div class="mb-3">
+                    <label for="username" class="form-label"><b>Username</b></label>
+                    <input
+                        id="username"
+                        name="username"
+                        type="text"
+                        class="form-control"
+                        placeholder="Enter your username"
+                        required
+                    >
+                </div>
+
+
+
+
+                <div class="mb-4">
+                    <label for="password" class="form-label"><b>Password</b></label>
+                    <input
+                        id="password"
+                        name="password"
+                        type="password"
+                        class="form-control"
+                        placeholder="Enter your password"
+                        required
+                    >
+                    <div class="invalid-feedback">Please enter correct password!!</div>
+                </div>
+
+
+                <button class="btn btn-success w-100">Login</button>
+            </form>
+        </div>
+    </div>
+</div>

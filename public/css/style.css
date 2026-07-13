@@ -1,0 +1,452 @@
+body{
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.main-content{
+    flex: 1;
+}
+
+.container{
+    flex: 1;
+}
+
+footer{
+    width: 100%;
+    flex-shrink: 0;
+}
+
+/* navbar */
+.navbar{
+    height: 5rem;
+    background-color: white;
+
+}
+.fa-bed{
+    color: rgb(188, 44, 58);
+    font-size: 2rem;
+}
+
+.nav-link{
+    color: #222222 !important; /* to overload the styling of the bpptstrap */
+}
+
+/*footer*/
+.f-info-links a{
+    text-decoration: none;
+    color:#222222;
+}
+
+.f-info-links a:hover{
+    text-decoration: underline;
+    
+}
+
+.f-info-links{
+    width:100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.f-info-socials{
+    width:100%;
+    font-size:1.3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+   
+}
+
+.f-info-socials i{
+     margin-right: 0.7rem;
+}
+
+
+.f-info{
+    text-align: center;
+    height:8rem;
+    background-color: rgb(232, 229, 229);
+    display:flex;
+    flex-wrap:wrap;
+    justify-content: center;
+    align-items: space-evenly;
+}
+
+.f-info-brand{
+     width:100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+/*cards*/
+.card{
+    border: none !important;
+    margin-bottom: 2rem;
+}
+
+.card-img-top{
+    border-radius: 1rem !important;
+}
+
+.card-rows{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: center;
+}
+.card{
+    margin-bottom: 1rem;
+}
+
+.card-img-top{
+    height: 18rem;
+    object-fit: cover;
+}
+
+.card-body{
+    padding: 0 !important;
+}
+
+.card-text p{
+    font-weight: 400;
+}
+
+.price{
+    font-weight: 700;
+    color: #222222;
+}
+
+.listing-link{
+    text-decoration: none;
+}
+
+/* cards effect */
+.card-img-overlay{
+    opacity: 0;
+}
+.card-img-overlay:hover{
+    opacity: 0.3;
+    background-color: white;
+}
+
+/* new page*/
+.add-btn{
+   background-color:  rgb(188, 44, 58);
+   border: none !important;
+}
+
+.auth-shell{
+    padding: 1rem 0 3rem;
+}
+
+.auth-card{
+    background: #ffffff;
+    border: 1px solid rgba(34, 34, 34, 0.08);
+    border-radius: 1.25rem;
+    padding: 2.5rem;
+    box-shadow: 0 16px 40px rgba(34, 34, 34, 0.06);
+}
+
+.auth-icon-wrapper{
+    width: 80px;
+    height: 80px;
+    margin: 0 auto;
+    background: linear-gradient(135deg, rgb(188, 44, 58), rgb(220, 70, 85));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    color: white;
+    box-shadow: 0 8px 20px rgba(188, 44, 58, 0.25);
+}
+
+.auth-title{
+    font-weight: 700;
+    color: #222222;
+    margin-bottom: 0.5rem;
+    font-size: 1.75rem;
+}
+
+.auth-subtitle{
+    color: #6b7280;
+    font-size: 0.95rem;
+    margin-bottom: 0;
+}
+
+.auth-card .form-label{
+    color: #222222;
+    font-weight: 600;
+    margin-bottom: 0.6rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.auth-input-icon{
+    color: rgb(188, 44, 58);
+    font-size: 0.95rem;
+}
+
+.auth-card .form-control{
+    border-radius: 0.8rem;
+    border: 1.5px solid rgba(34, 34, 34, 0.12);
+    padding: 0.8rem 1rem;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+}
+
+.auth-card .form-control:focus{
+    border-color: rgb(188, 44, 58);
+    box-shadow: 0 0 0 0.3rem rgba(188, 44, 58, 0.1);
+}
+
+.auth-card .form-control.is-valid{
+    border-color: rgb(25, 169, 61);
+}
+
+.auth-card .form-control.is-valid:focus{
+    border-color: rgb(25, 169, 61);
+    box-shadow: 0 0 0 0.3rem rgba(25, 169, 61, 0.1);
+}
+
+.auth-btn{
+    background: linear-gradient(135deg, rgb(188, 44, 58), rgb(210, 50, 65));
+    border: none;
+    color: white;
+    font-weight: 600;
+    padding: 0.9rem 1.5rem;
+    border-radius: 0.8rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(188, 44, 58, 0.2);
+}
+
+.auth-btn:hover{
+    background: linear-gradient(135deg, rgb(160, 35, 47), rgb(180, 40, 55));
+    box-shadow: 0 6px 20px rgba(188, 44, 58, 0.3);
+    color: white;
+}
+
+.auth-divider{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 1.5rem 0;
+}
+
+.auth-divider::before,
+.auth-divider::after{
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: rgba(34, 34, 34, 0.1);
+}
+
+.auth-divider span{
+    color: #6b7280;
+    font-size: 0.85rem;
+    white-space: nowrap;
+}
+
+.auth-card .btn-outline-primary{
+    color: rgb(188, 44, 58);
+    border-color: rgb(188, 44, 58);
+    font-weight: 600;
+    border-radius: 0.8rem;
+    padding: 0.9rem 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.auth-card .btn-outline-primary:hover{
+    background: rgb(188, 44, 58);
+    border-color: rgb(188, 44, 58);
+    color: white;
+    box-shadow: 0 4px 15px rgba(188, 44, 58, 0.2);
+}
+
+/* error page */
+.error-shell{
+    padding: 2rem 0 3rem;
+    display: flex;
+    align-items: center;
+    min-height: 60vh;
+}
+
+.error-card{
+    background: #ffffff;
+    border: 1px solid rgba(34, 34, 34, 0.08);
+    border-radius: 1.25rem;
+    padding: 2.5rem;
+    box-shadow: 0 16px 40px rgba(34, 34, 34, 0.06);
+}
+
+.error-icon-wrapper{
+    width: 80px;
+    height: 80px;
+    margin: 0 auto;
+    background: linear-gradient(135deg, rgb(250, 23, 46), rgb(220, 70, 85));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    color: white;
+    box-shadow: 0 8px 20px rgba(250, 23, 46, 0.25);
+}
+
+.error-title{
+    font-weight: 700;
+    color: #222222;
+    margin-bottom: 0.5rem;
+    font-size: 1.75rem;
+}
+
+.error-message{
+    color: #6b7280;
+    font-size: 1rem;
+    margin-bottom: 0;
+}
+
+/* edit page */
+.edit-btn{
+    background-color:  rgb(188, 44, 58);
+   border: none !important;
+}
+
+/* show page */
+.delet-btn{
+    background-color:  rgb(250, 23, 46);
+   border: none !important;
+}
+
+.edit2-btn{
+     background-color:  rgb(25, 169, 61);
+   border: none !important;
+}
+
+/* review section */
+.review-section{
+    padding: 1.5rem 1.75rem;
+    background: #ffffff;
+    border-radius: 1rem;
+    border: 1px solid rgba(34, 34, 34, 0.08);
+}
+.review-section h4{
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+.review-section .form-control,
+.review-section .form-range{
+    border-radius: 0.75rem;
+    border-color: rgba(34, 34, 34, 0.12);
+}
+.review-section .form-control:focus,
+.review-section .form-range:focus{
+    border-color: rgb(188, 44, 58);
+    box-shadow: 0 0 0 0.2rem rgba(188, 44, 58, 0.15);
+}
+.review-badge{
+    display: inline-block;
+    padding: 0.45rem 0.85rem;
+    border-radius: 999px;
+    font-size: 0.8rem;
+    color: #555;
+    background: rgba(188, 44, 58, 0.08);
+}
+.review-section .btn.edit2-btn{
+    background-color: rgb(25, 169, 61);
+    border-color: rgb(25, 169, 61);
+}
+.review-section .btn.edit2-btn:hover{
+    background-color: rgb(20, 140, 51);
+    border-color: rgb(20, 140, 51);
+}
+.review-cards{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+.review-card{
+    flex: 1 1 calc(50% - 0.5rem);
+    min-width: 250px;
+    background: #f8f9ff;
+    border: 1px solid rgba(34, 34, 34, 0.08);
+    border-radius: 1rem;
+    padding: 1rem 1.25rem;
+    box-shadow: 0 10px 30px rgba(34, 34, 34, 0.04);
+}
+.review-card-header{
+    gap: 0.75rem;
+}
+.review-stars{
+    display: inline-flex;
+    gap: 0.15rem;
+    font-size: 1rem;
+    color: #d1d5db;
+}
+.review-stars .star{
+    display: inline-block;
+    line-height: 1;
+    color: #d1d5db;
+}
+.review-stars .star.filled{
+    color: #f59e0b;
+}
+.review-rating{
+    font-weight: 700;
+    font-size: 0.9rem;
+    background: rgba(188, 44, 58, 0.08);
+    color: #222;
+    border-radius: 999px;
+    padding: 0.25rem 0.75rem;
+}
+.review-text{
+    margin: 0.75rem 0 0;
+    color: #333;
+    line-height: 1.55;
+}
+.review-card-meta{
+    gap: 1rem;
+}
+.review-author{
+    gap: 0.85rem;
+}
+.review-avatar{
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid rgba(188, 44, 58, 0.12);
+}
+.review-author-name{
+    font-size: 1rem;
+    font-weight: 700;
+    margin: 0;
+}
+.review-author-subtitle{
+    color: #6c757d;
+    font-size: 0.85rem;
+    margin: 0;
+}
+
+
+/*MAP*/
+#map {
+    width: 100%;
+    max-width: 100%;
+    height: 450px;
+    min-height: 450px;
+    border-radius: 1rem;
+    overflow: hidden;
+    margin: 0 auto;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
+}
